@@ -1,0 +1,14 @@
+SubDir TOP ;
+
+LOCATE_TARGET = [ FDirName $(TOP) objects ] ;
+
+C++FLAGS += "-std=c++17" ;
+
+REQUIRED_LIBS = -lstdc++ -lpthread -lcrypto ;
+
+
+Main lnleakshield :
+	[ GLOB $(TOP)							: *.cpp ]
+;
+
+LINKLIBS on lnleakshield = $(REQUIRED_LIBS) ;

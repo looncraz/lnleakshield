@@ -124,16 +124,6 @@ LeakshieldData* ReadLeakshield(const std::string& path)
 }
 
 
-void PrintHelp()
-{
-	printf("lnleakshield - utility to probe Aquacomputer Leakshield\n");
-	printf("Built %s\n", BUILDDATE);
-
-	printf("\t%-18s\t-\tFind Leakshield HID device(s)\n", "search");
-	printf("\t%-18s\t-\tRead data from specific device\n", "probe /dev/hidraw#");
-}
-
-
 #define BUILD_FOR_HWINFO 0
 
 
@@ -176,13 +166,28 @@ std::deque<CmdOption> gCommandOptions = {
 		return 0;
 	}},
 
-
 	{{"monitor-deltas"}, 1, {{{"/dev/hidraw#", "Path to device"}}}, [](SStringList list){
 		printf("Currently unimplemented, sorry!\n");
 		return 0;
 	}},
 
 };
+
+
+void PrintHelp()
+{
+	printf("lnleakshield - basic utility to probe Aquacomputer Leakshield\n");
+	printf("Built %s\n", BUILDDATE);
+	printf("\nCommands:\n");
+
+	for (auto cmd : gCommandOptions) {
+		printf("\t%-20s ", cmd.command.c_str());
+		for (auto [ex, descr] : cmd.options) {
+			printf(" %-20s (%s)\n", ex.c_str(), descr.c_str());
+		}
+		if (cmd.options.size() == 0) puts("(no arguments)");
+	}
+}
 
 
 

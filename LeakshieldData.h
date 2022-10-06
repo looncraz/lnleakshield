@@ -82,8 +82,8 @@ struct LeakshieldData {
 	printf("       *Beats me 10  : %i\n", 			beatsMe10.Int32());
 	printf("       *Beats me 11  : %i\n", 			beatsMe11.Int32());
 
-		printf("\tPress 1      : %.2f mbar\n", 	(float)press1.Int32() / 100);
-		printf("\tPress 2      : %.2f mbar\n", 	(float)press2.Int32() / 100);
+		printf("\tPress 1      : %.2f mbar\n", 	(float)press1.UInt32() / 100);
+		printf("\tPress 2      : %.2f mbar\n", 	(float)press2.UInt32() / 100);
 		printf("\tAverage      : %.1f  mbar\n", 	(float)pumpAverage.Int32() / 10);
 		printf("\tCorrection   : %.1f  mbar\n", 	(float)correction.Int32() / 10);
 		printf("\tAdjusted     : %.1f  mbar\n", 	(float)adjusted.Int32() / 10);
